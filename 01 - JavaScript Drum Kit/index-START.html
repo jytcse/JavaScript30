@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
@@ -57,10 +59,34 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
+  <script>
+    // document.querySelectorAll(".key")
+    // console.log(document.querySelectorAll(".key"));
+    // document.querySelectorAll(".key").forEach(function(item){
+    // console.log(item);
+    // });
+    window.addEventListener('keyup', function (e) {
+      let pressKey = e.keyCode;
+      if (!(pressKey != '65' && pressKey != '83' && pressKey != '68' && pressKey != '70' && pressKey != '71' && pressKey != '72' && pressKey != '74' && pressKey != '75' && pressKey != '76')) {
+        let curretDiv = document.querySelector(`.key[data-key="${pressKey}"]`);
+        curretDiv.classList.add("playing");
+        let obj = new Audio(document.querySelector(`audio[data-key="${pressKey}"]`).src);
+        obj.play();
+        // obj.ended = fun
+        setTimeout(function() {
+          curretDiv.classList.remove("playing");
+        },500)
+        // obj.addEventListener('ended', function () {
+        //   
+        // })
+        // obj.
+      }
 
-</script>
+    });
+
+  </script>
 
 
 </body>
+
 </html>
